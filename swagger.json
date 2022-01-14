@@ -7937,6 +7937,287 @@
           }
         }
       }
+    },
+    "/logLevel/{level}": {
+      "put": {
+        "tags": [
+          "Other"
+        ],
+        "parameters": [
+          {
+            "name": "level",
+            "in": "path",
+            "description": "level",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/time": {
+      "put": {
+        "tags": [
+          "Other"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/preferences/server/": {
+      "post": {
+        "tags": [
+          "Other"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          }
+        }
+      }
+    },
+    "/softVersion/": {
+      "get": {
+        "tags": [
+          "Other"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/preferences/": {
+      "get": {
+        "tags": [
+          "Other"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/preferences/update": {
+      "post": {
+        "tags": [
+          "Other"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/license/": {
+      "get": {
+        "tags": [
+          "Other"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/cluster/": {
+      "get": {
+        "tags": [
+          "Other"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/statistics/{nodeId}/metrics/last/100/": {
+      "get": {
+        "tags": [
+          "Other"
+        ],
+        "parameters": [
+          {
+            "name": "nodeId",
+            "in": "path",
+            "description": "nodeId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/statistics/{productClass}/provisioning/report": {
+      "post": {
+        "tags": [
+          "Other"
+        ],
+        "parameters": [
+          {
+            "name": "productClass",
+            "in": "path",
+            "description": "productClass",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/statistics/{productClass}/installation/report": {
+      "post": {
+        "tags": [
+          "Other"
+        ],
+        "parameters": [
+          {
+            "name": "productClass",
+            "in": "path",
+            "description": "productClass",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
     }
   },
   "components": {
