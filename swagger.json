@@ -1,0 +1,2040 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "api",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "paths": {
+    "/events/deviceAlarms/byFilters": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/size"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/events/deviceAlarms/ack/{id}": {
+      "post": {
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/events/deviceAlarms/ackMany": {
+      "post": {
+        "tags": [
+          "Events"
+        ],
+        "requestBody": {
+          "description": "ackArray",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/events/device/{id}": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/events/system/byFilters": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/size"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/events/deviceSpecificErrors/byFilters": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/size"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/events/userAction/byFilters": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/size"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/monitoring/import/file": {
+      "post": {
+        "tags": [
+          "Monitoring"
+        ],
+        "requestBody": {
+          "description": "file",
+          "required": true,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/monitoring/{id}/clone/{name}": {
+      "post": {
+        "tags": [
+          "Monitoring"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "description": "name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Version"
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/monitoring/{id}/export/xml": {
+      "post": {
+        "tags": [
+          "Monitoring"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/monitoring/{id}/{operation}": {
+      "put": {
+        "tags": [
+          "Monitoring"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "name": "operation",
+            "in": "path",
+            "description": "operation",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "activate",
+                "deactivate"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/monitoring/{id}/fork": {
+      "post": {
+        "tags": [
+          "Monitoring"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Version"
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/monitoring/{id}": {
+      "get": {
+        "tags": [
+          "Monitoring"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Monitoring"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Struct"
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Monitoring"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/monitoring/": {
+      "get": {
+        "tags": [
+          "Monitoring"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Monitoring"
+        ],
+        "requestBody": {
+          "description": "monitorItemStruct",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  },
+                  "isActive": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/operations": {
+      "post": {
+        "tags": [
+          "Operations"
+        ],
+        "requestBody": {
+          "description": "operationStruct",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deviceIdStruct": {
+                    "type": "object",
+                    "properties": {
+                      "manufacturer": {
+                        "type": "string"
+                      },
+                      "oui": {
+                        "type": "string"
+                      },
+                      "productClass": {
+                        "type": "string"
+                      },
+                      "serialNumber": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "entries": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "object"
+                        },
+                        "priority": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/operations/request/{operationId}/cancel": {
+      "put": {
+        "tags": [
+          "Operations"
+        ],
+        "parameters": [
+          {
+            "name": "operationId",
+            "in": "path",
+            "description": "operationId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/operations/{deviceId}/request/cancel": {
+      "post": {
+        "tags": [
+          "Operations"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/device/count/{parameter}": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "name": "parameter",
+            "in": "path",
+            "description": "parameter",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "total",
+                "status"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/device/allCount": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/device/totalCount": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/ata/count/{parameter}": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "name": "parameter",
+            "in": "path",
+            "description": "parameter",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "total",
+                "status"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/device/find/byFilters": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/size"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/ata/find/byFilters": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/size"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/report/summary": {
+      "post": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          }
+        ],
+        "requestBody": {
+          "description": "SummaryConfigStruct",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "currentproduct": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "entries": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/device/group/{parameter}": {
+      "post": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "name": "parameter",
+            "in": "path",
+            "description": "parameter",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "sn",
+                "imei",
+                "msisdn"
+              ]
+            }
+          },
+          {
+            "$ref": "#/components/parameters/groupName"
+          },
+          {
+            "$ref": "#/components/parameters/autoFiltering"
+          },
+          {
+            "$ref": "#/components/parameters/scopeType"
+          }
+        ],
+        "requestBody": {
+          "description": "groupStruct",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/ata/group/imei": {
+      "post": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/groupName"
+          },
+          {
+            "$ref": "#/components/parameters/autoFiltering"
+          },
+          {
+            "$ref": "#/components/parameters/scopeType"
+          }
+        ],
+        "requestBody": {
+          "description": "groupStruct",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/device/{deviceId}/firmware/latest": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/ata/{deviceId}/firmware/latest": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/device/{deviceId}/callLog": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/server/report/count": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/server/report/{reportId}": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/reportId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/server/report": {
+      "delete": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/{deviceId}/report/count": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/{deviceId}/report/{logId}": {
+      "delete": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          },
+          {
+            "name": "logId",
+            "in": "path",
+            "description": "logId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/{deviceId}/report": {
+      "delete": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/report/device/{reportId}": {
+      "post": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/reportId"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/report/server/{reportId}": {
+      "post": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/reportId"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/device": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/msisdn"
+          },
+          {
+            "$ref": "#/components/parameters/imei"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/acc/device/exit": {
+      "post": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/msisdn"
+          },
+          {
+            "$ref": "#/components/parameters/imei"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/acc/device": {
+      "post": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/msisdn"
+          },
+          {
+            "$ref": "#/components/parameters/imei"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/ata": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/msisdn"
+          },
+          {
+            "$ref": "#/components/parameters/imei"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/device/{deviceId}/logs/upload": {
+      "post": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/ata/{deviceId}/logs/upload": {
+      "post": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/device/{deviceId}/download/{fileId}": {
+      "post": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceId"
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "description": "fileId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/ata/{deviceId}/download/{fileId}": {
+      "post": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceId"
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "description": "fileId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/deviceInfo": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/simCardInfo": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/errors": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/apps": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/dataUsage": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/radioStatus": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/wifiStatus": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/connectedHosts": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/connectivity": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/lxc": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/neighborList": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/Spectrum": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/PLMNList": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/serviceProvider": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/softwareManagement": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/appList": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/regStatus": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/device/{deviceId}/deviceStatus": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          },
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/summaryReportConfig": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/{productType}/summaryProvisioningReportConfig": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/productType"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/summary/availProductNames": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/statistics/availStatisticsProductNames": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/device/{deviceId}": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dms/ata/{deviceId}": {
+      "get": {
+        "tags": [
+          "DMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Struct": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "schedule": {
+            "type": "object"
+          },
+          "scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "stages": {
+            "type": "object"
+          },
+          "firstStage": {
+            "type": "string"
+          },
+          "target": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "parameters": {
+      "id": {
+        "name": "id",
+        "in": "path",
+        "description": "id",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "deviceId": {
+        "name": "deviceId",
+        "in": "path",
+        "description": "deviceId",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "reportId": {
+        "name": "reportId",
+        "in": "path",
+        "description": "reportId",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "productType": {
+        "name": "productType",
+        "in": "path",
+        "description": "productType",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "size": {
+        "name": "size",
+        "in": "query",
+        "description": "size",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "page": {
+        "name": "page",
+        "in": "query",
+        "description": "page",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "sort": {
+        "name": "sort",
+        "in": "query",
+        "description": "sort",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter": {
+        "name": "filter",
+        "in": "query",
+        "description": "filter",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "groupName": {
+        "name": "groupName",
+        "in": "query",
+        "description": "groupName",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "autoFiltering": {
+        "name": "autoFiltering",
+        "in": "query",
+        "description": "autoFiltering",
+        "required": true,
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "scopeType": {
+        "name": "scopeType",
+        "in": "query",
+        "description": "scopeType",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "format": {
+        "name": "format",
+        "in": "query",
+        "description": "format",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "txt",
+            "csv",
+            "xlsx"
+          ]
+        }
+      },
+      "msisdn": {
+        "name": "msisdn",
+        "in": "query",
+        "description": "msisdn",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "imei": {
+        "name": "imei",
+        "in": "query",
+        "description": "imei",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "requestBodies": {
+      "Struct": {
+        "description": "Struct",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Struct"
+            }
+          }
+        }
+      },
+      "Version": {
+        "description": "version",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": []
+}
