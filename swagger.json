@@ -1840,6 +1840,6103 @@
           }
         }
       }
+    },
+    "/configuration": {
+      "get": {
+        "tags": [
+          "configuration"
+        ],
+        "summary": "configuration",
+        "description": "This method is used by the ACS to get all configurations.",
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "configuration"
+        ],
+        "summary": "configuration",
+        "description": "This method is used by the ACS to add a configuration",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/configuration_body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/configuration/import/file": {
+      "post": {
+        "tags": [
+          "configuration"
+        ],
+        "summary": "configuration file",
+        "description": "This method is used by the ACS to import the configuration.",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/import_file_body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/configuration/load/file": {
+      "get": {
+        "tags": [
+          "configuration"
+        ],
+        "summary": "load file",
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/configuration/{configurationId}/clone/{cloneConfigureName}": {
+      "post": {
+        "tags": [
+          "configuration"
+        ],
+        "summary": "configuration-configurationId-clone-cloneConfigureName",
+        "description": "This method is used by the ACS to clone the configuration.",
+        "parameters": [
+          {
+            "name": "configurationId",
+            "in": "path",
+            "description": "configurationId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "cloneConfigureName",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/configuration/{configurationId}/export/xml": {
+      "post": {
+        "tags": [
+          "configuration"
+        ],
+        "summary": "configuration-configurationId-export-xml",
+        "description": "This method is used by the ACS to export the configuration.",
+        "parameters": [
+          {
+            "name": "configurationId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/configuration/{configurationId}": {
+      "get": {
+        "tags": [
+          "configuration"
+        ],
+        "summary": "configuration-configurationId",
+        "description": "This method is used by the ACS to get configuration by id.",
+        "parameters": [
+          {
+            "name": "configurationId",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "configuration"
+        ],
+        "summary": "configuration-configurationId",
+        "description": "This method is used by the ACS to update configuration by id.",
+        "parameters": [
+          {
+            "name": "configurationId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/configuration_configurationId_body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "configuration"
+        ],
+        "description": "This method is used by the ACS to delete the configuration.",
+        "parameters": [
+          {
+            "name": "configurationId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/configuration/{configurationId}/fork": {
+      "post": {
+        "tags": [
+          "configuration"
+        ],
+        "description": "This method is used by the ACS to fork the configuration.",
+        "parameters": [
+          {
+            "name": "configurationId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/configuration/{configurationId}/(activate|deactivate)": {
+      "put": {
+        "tags": [
+          "configuration"
+        ],
+        "description": "This method is used by the ACS to activate or deactivate the configuration.",
+        "parameters": [
+          {
+            "name": "configurationId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/custom/device/cellular/dataUsage": {
+      "get": {
+        "tags": [
+          "custom"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/custom/device/broadband/outage": {
+      "get": {
+        "tags": [
+          "custom"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dataTable/server/reports": {
+      "get": {
+        "tags": [
+          "dataTable"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dataTable/usp/server/reports": {
+      "get": {
+        "tags": [
+          "dataTable"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dataTable/device/{deviceId}/operations/pending": {
+      "get": {
+        "tags": [
+          "dataTable"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dataTable/device/{deviceId}/operations/log": {
+      "get": {
+        "tags": [
+          "dataTable"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dataTable/{productType}/device/{deviceId}/reports": {
+      "get": {
+        "tags": [
+          "dataTable"
+        ],
+        "parameters": [
+          {
+            "name": "productType",
+            "in": "path",
+            "description": "productType",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/dataTable/{productName}/device/{deviceId}/reports": {
+      "get": {
+        "tags": [
+          "dataTable"
+        ],
+        "parameters": [
+          {
+            "name": "productName",
+            "in": "path",
+            "description": "productName",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to get device basic information with device ID (The device ID is available from section 2.2.1",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_2"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to delete the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to get the info of the device by the deviceStruct.",
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in JSON format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_2"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/unregister": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to delete a list of devices.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/device_unregister_body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/dataModel": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to query the data model of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in JSON format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_3"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/dataModel/modify/{node}": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to add node to the data model of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "node",
+            "in": "path",
+            "description": "node",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to delete node from the data model of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "node",
+            "in": "path",
+            "description": "node",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/dataModel/discover/{node}": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to refresh the data model of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "node",
+            "in": "path",
+            "description": "node",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/groupDataModel": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to get the data model of the device group.",
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in JSON format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/log/session": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to get the session log of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in JSON format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to delete all session logs of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/log/detail/{sessionId}": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "sessionId",
+            "in": "path",
+            "description": "sessionId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in JSON format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/log/sessionExport": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "description": "sessionExport",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/log/session/{logId}": {
+      "delete": {
+        "tags": [
+          "device"
+        ],
+        "description": "session log",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "logId",
+            "in": "path",
+            "description": "logId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/log/session/count": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to get the count of session logs of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/log/operations/{logId}": {
+      "delete": {
+        "tags": [
+          "device"
+        ],
+        "description": "operations log",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "logId",
+            "in": "path",
+            "description": "logId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/log/operations/count": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to get the count of operation logs of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/log/operations": {
+      "delete": {
+        "tags": [
+          "device"
+        ],
+        "description": "operations",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/label": {
+      "put": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/files": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to get managed files of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to edit the managed file of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to add item to managed files of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/files/{fileId}": {
+      "delete": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to delete the managed file of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int6"
+            }
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "description": "fileId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/download/file/{fileId}": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to set a download task to the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "description": "fileId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/transfers/current/count": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/transfers/current": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/transfers/current/{fileId}/cancel": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to set a download task to the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "description": "fileId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/transfers/log": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/transfers/log/count": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/transfers/log/{logId}": {
+      "delete": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "logId",
+            "in": "path",
+            "description": "logId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/discoveringList": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/discoveringList/{listId}": {
+      "delete": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "listId",
+            "in": "path",
+            "description": "listId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/discoveringList/{listId}/activate": {
+      "put": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "listId",
+            "in": "path",
+            "description": "listId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/discoveringList/{listId}/deactivate": {
+      "put": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "listId",
+            "in": "path",
+            "description": "listId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/diagnostics/result/count": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/diagnostics/result": {
+      "delete": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/diagnostics/{logId}/result": {
+      "delete": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "logId",
+            "in": "path",
+            "description": "logId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/bulkDataRule": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/bulkDataRule/{ruleId}": {
+      "delete": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "ruleId",
+            "in": "path",
+            "description": "ruleId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/diagnostics/{diagnosticsId}/execute": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "diagnosticsId",
+            "in": "path",
+            "description": "diagnosticsId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/operations/pending/count": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to get count of the pending tasks of a device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/connectionRequest/XMPP": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to execute connect request to the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/enter/MQTT": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/Reboot": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to execute reboot command to the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/FactoryReset": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to execute factory-reset command to the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/attributes": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to execute connect request to the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/attribute": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to edit provisioning attributes of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/attributes/{attributeName}": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to edit attribute of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "attributeName",
+            "in": "path",
+            "description": "attributeName",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to delete the attribute of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int6"
+            }
+          },
+          {
+            "name": "attributeName",
+            "in": "path",
+            "description": "attributeName",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/{value}": {
+      "put": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/device/dashboard/count": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to get the dashboard count of devices.",
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/network_map/Info": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to get the netword map info of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/location/Info": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to get the location info of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/router/Info": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to get the router info of the device.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/tower/towerLocation/{cgi}": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "cgi",
+            "in": "path",
+            "description": "cgi",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/tower/neighborhood/{cgi}": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "cgi",
+            "in": "path",
+            "description": "cgi",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/events/activeAlarms/byFilters": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/events/activeAlarms/ack/{id}": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/events/activeAlarms/ackMany": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/events/historyAlarms/byFilters": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "description": "This method is used by the ACS to get the history alarms of the device by specified filtering parameters.",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/troubleshooting/register": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/troubleshooting/unregister": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/troubleshooting/polling": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/troubleshooting/saveMsg": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/troubleshooting/forceDisconnect": {
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/device/{deviceId}/initProvision/request": {
+      "get": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "device"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/diagnostics/template/{id}": {
+      "delete": {
+        "tags": [
+          "diagnostics"
+        ],
+        "description": "diagnostics template id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/diagnostics/template": {
+      "get": {
+        "tags": [
+          "diagnostics"
+        ],
+        "description": "template",
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "diagnostics"
+        ],
+        "description": "template",
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "diagnostics"
+        ],
+        "description": "template",
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/diagnostics/{id}": {
+      "delete": {
+        "tags": [
+          "diagnostics"
+        ],
+        "description": "diagnostics id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/diagnostics": {
+      "get": {
+        "tags": [
+          "diagnostics"
+        ],
+        "description": "diagnostics",
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "diagnostics"
+        ],
+        "description": "diagnostics",
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "diagnostics"
+        ],
+        "description": "diagnostics",
+        "responses": {
+          "200": {
+            "description": "The request was performed successfully"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/productClass/{id}/discoveringList/{discoverid}/{op}": {
+      "put": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "discoveringList",
+        "description": "discoveringList",
+        "operationId": "discoveringList_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "discoverid",
+            "description": "discoverid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "op",
+            "description": "op",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/discoveringList/{discoverid}": {
+      "delete": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "discoveringList",
+        "description": "discoveringList",
+        "operationId": "discoveringList_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "discoverid",
+            "in": "path",
+            "description": "discoverid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/discoveringList": {
+      "get": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "discoveringList",
+        "description": "Finds discoveringList by tags.",
+        "operationId": "discoveringList_get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "search by id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "discoveringList",
+        "description": "Finds discoveringList by tags.",
+        "operationId": "discoveringList_id_post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "search by id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "discoveringList",
+        "description": "Finds discoveringList by tags.",
+        "operationId": "discoveringList_id_put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "search by id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/diagnostics/template/{tempid}": {
+      "delete": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "Deletes a diagnostics by id",
+        "description": "Deletes a diagnostics by id",
+        "operationId": "diagnostics_id_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tempid",
+            "in": "path",
+            "description": "tempid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/diagnostics/template": {
+      "get": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "diagnostics",
+        "description": "diagnostics",
+        "operationId": "diagnostics_get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "diagnostics",
+        "description": "diagnostics",
+        "operationId": "diagnostics_post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "diagnostics",
+        "description": "diagnostics",
+        "operationId": "diagnostics_put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/diagnostics/{diagid}": {
+      "delete": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "Deletes a diagnostics by id",
+        "description": "Deletes a diagnostics by id",
+        "operationId": "diagnostics_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "diagid",
+            "in": "path",
+            "description": "diagid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/diagnostics": {
+      "get": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "diagnostics",
+        "description": "diagnostics",
+        "operationId": "diagnostics_id_get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "diagnostics",
+        "description": "diagnostics",
+        "operationId": "diagnostics_id_post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "diagnostics",
+        "description": "diagnostics",
+        "operationId": "diagnostics_id_put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/attributes/{name}": {
+      "post": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "attributes",
+        "description": "attributes",
+        "operationId": "attributes_post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "description": "name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "attributes",
+        "description": "attributes",
+        "operationId": "attributes_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "description": "name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/attributes": {
+      "get": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "attributes",
+        "description": "attributes",
+        "operationId": "attributes_get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/files/{fileid}": {
+      "delete": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "deleteProductClassFiles",
+        "description": "files",
+        "operationId": "files_id_delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "fileid",
+            "description": "fileid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/files": {
+      "get": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "getProductClassFiles",
+        "description": "files",
+        "operationId": "files_id_get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "createProductClassFiles",
+        "description": "files",
+        "operationId": "files_id_post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "updateProductClassFiles",
+        "description": "files",
+        "operationId": "files_id_put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/bulkDataRule": {
+      "get": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "bulkDataRule",
+        "description": "bulkDataRule",
+        "operationId": "bulkDataRule_id_get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "bulkDataRule",
+        "description": "bulkDataRule",
+        "operationId": "bulkDataRule_id_post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "bulkDataRule",
+        "description": "bulkDataRule",
+        "operationId": "bulkDataRule_id_put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/bulkDataRule/{ruleId}": {
+      "delete": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "bulkDataRule",
+        "description": "bulkDataRule",
+        "operationId": "bulkDataRule_id_delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "ruleId",
+            "description": "ruleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/attribute": {
+      "post": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "setPerformProductClassActivation",
+        "description": "setPerformProductClassActivation",
+        "operationId": "attribute_id_post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}/{op}": {
+      "put": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "performProductClassActivation",
+        "description": "performProductClassActivation",
+        "operationId": "attribute_id_put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "op",
+            "in": "path",
+            "description": "op",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass/{id}": {
+      "put": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "deleteProductClass",
+        "description": "delete productClass",
+        "operationId": "deleteProductClass",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/productClass": {
+      "get": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "getProductClass",
+        "description": "getProductClass",
+        "operationId": "getProductClass",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "productClass"
+        ],
+        "summary": "createProductClass",
+        "description": "createProductClass",
+        "operationId": "createProductClass",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/attributes/": {
+      "get": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "getProvisioningScopeAttributes",
+        "description": "getProvisioningScopeAttributes",
+        "operationId": "getProvisioningScopeAttributes",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "createProvisionScopes",
+        "description": "createProvisionScopes",
+        "operationId": "createProvisionScopes",
+        "requestBody": {
+          "description": "body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "cpeNumber": {
+                    "type": "number"
+                  },
+                  "isActive": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/cpeNumbers": {
+      "get": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "getProvisioningScopeCpeNumbers",
+        "description": "getProvisioningScopeCpeNumbers",
+        "operationId": "getProvisioningScopeCpeNumbers",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/includeProduct": {
+      "get": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "getIncludeProduct",
+        "description": "getIncludeProduct",
+        "operationId": "getIncludeProduct",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/attribute": {
+      "get": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "attribute",
+        "description": "attribute",
+        "operationId": "attribute",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/scopeGroupStatus": {
+      "get": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "scopeGroupStatus",
+        "description": "scopeGroupStatus",
+        "operationId": "scopeGroupStatus",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/group/sn": {
+      "post": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "scopeGroupStatus",
+        "description": "scopeGroupStatus",
+        "operationId": "scopeGroupStatus_sn",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/group/msisdn": {
+      "post": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "createGroup",
+        "description": "createGroup",
+        "operationId": "createGroup",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "query",
+            "description": "groupName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "autoFiltering",
+            "in": "query",
+            "description": "autoFiltering",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "scopeType",
+            "in": "query",
+            "description": "scopeType",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/group/{itemId}": {
+      "delete": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "deleteGroupByitemId",
+        "description": "deleteGroupByitemId",
+        "operationId": "deleteGroupByitemId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "itemId",
+            "description": "itemId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "getGroupByitemId",
+        "description": "getGroupByitemId",
+        "operationId": "getGroupByitemId",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "description": "itemId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/group/{itemId}/struct": {
+      "delete": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "deleteStructGroupByitemId",
+        "description": "deleteStructGroupByitemId",
+        "operationId": "deleteStructGroupByitemId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "itemId",
+            "description": "itemId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/group/{itemId}/addToSn": {
+      "post": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "ScopeGroupAddToSerialNumber",
+        "description": "ScopeGroupAddToSerialNumber",
+        "operationId": "ScopeGroupAddToSerialNumber",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "itemId",
+            "description": "itemId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sn": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/group/{itemId}/addToMsisdn": {
+      "post": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "ScopeGroupAddToMsisdn",
+        "description": "ScopeGroupAddToMsisdn",
+        "operationId": "ScopeGroupAddToMsisdn",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "itemId",
+            "description": "itemId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "msisdn": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/group/{itemId}/editToSn": {
+      "post": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "ScopeGroupEditFileSn",
+        "description": "ScopeGroupEditFileSn",
+        "operationId": "ScopeGroupEditFileSn",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "itemId",
+            "description": "itemId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sn": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/group/{itemId}/editToMsisdn": {
+      "post": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "ScopeGroupEditFileMsisdn",
+        "description": "ScopeGroupEditFileMsisdn",
+        "operationId": "ScopeGroupEditFileMsisdn",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "itemId",
+            "description": "itemId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "msisdn": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/{id}/device/count": {
+      "get": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "getdeviceCount",
+        "description": "getdeviceCount",
+        "operationId": "getdeviceCount",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/provisioning/scope/group": {
+      "get": {
+        "tags": [
+          "provisioning"
+        ],
+        "summary": "getScopeGroup",
+        "description": "getScopeGroup",
+        "operationId": "getScopeGroup",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/server/files": {
+      "get": {
+        "tags": [
+          "server"
+        ],
+        "summary": "getServerFiles",
+        "description": "getServerFiles",
+        "operationId": "getServerFiles",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "server"
+        ],
+        "summary": "addServerFile",
+        "description": "addServerFile",
+        "operationId": "addServerFile",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "file": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "server"
+        ],
+        "summary": "updateServerFile",
+        "description": "updateServerFile",
+        "operationId": "updateServerFile_put",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "file": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/server/files/{fileId}": {
+      "delete": {
+        "tags": [
+          "server"
+        ],
+        "summary": "deleteServerFileItem",
+        "description": "deleteServerFileItem",
+        "operationId": "deleteServerFileItem",
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "path",
+            "description": "fileId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/server/bulkDataRule": {
+      "get": {
+        "tags": [
+          "server"
+        ],
+        "summary": "getServerBulkDataRuleList",
+        "description": "getServerBulkDataRuleList",
+        "operationId": "getServerBulkDataRuleList",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "server"
+        ],
+        "summary": "AddServerBulkDataRule",
+        "description": "AddServerBulkDataRule",
+        "operationId": "AddServerBulkDataRule",
+        "requestBody": {
+          "description": "body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "server"
+        ],
+        "summary": "updateServerBulkDataRule",
+        "description": "updateServerBulkDataRule",
+        "operationId": "updateServerBulkDataRule",
+        "requestBody": {
+          "description": "body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/server/bulkDataRule/{ruleId}": {
+      "delete": {
+        "tags": [
+          "server"
+        ],
+        "summary": "deleteServerBulkDataRule",
+        "description": "deleteServerBulkDataRule",
+        "operationId": "deleteServerBulkDataRule",
+        "parameters": [
+          {
+            "name": "ruleId",
+            "in": "path",
+            "description": "ruleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/server/bulkDataRule/information": {
+      "get": {
+        "tags": [
+          "server"
+        ],
+        "summary": "getServerInfoFromLicense",
+        "description": "getServerInfoFromLicense",
+        "operationId": "getServerInfoFromLicense",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/user/verifyidp": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "verifyidp",
+        "description": "verifyidp",
+        "operationId": "verifyidp",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "idpdata": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/user/verify": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "verify",
+        "description": "verify",
+        "operationId": "verify",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/user/{id}/{op}": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "activeUser",
+        "description": "activeUser",
+        "operationId": "activeUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "op",
+            "in": "path",
+            "description": "op",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "summary": "removeUser",
+        "description": "removeUser",
+        "operationId": "removeUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "getUser",
+        "description": "getUser",
+        "operationId": "getUser",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "addUser",
+        "description": "addUser",
+        "operationId": "addUser",
+        "requestBody": {
+          "description": "body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "confirmPassword": {
+                    "type": "string"
+                  },
+                  "expirationDate": {
+                    "type": "string"
+                  },
+                  "isActive": {
+                    "type": "boolean"
+                  },
+                  "roles": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "scope": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "updateUser",
+        "description": "updateUser",
+        "operationId": "updateUser",
+        "requestBody": {
+          "description": "body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "confirmPassword": {
+                    "type": "string"
+                  },
+                  "expirationDate": {
+                    "type": "string"
+                  },
+                  "isActive": {
+                    "type": "boolean"
+                  },
+                  "roles": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "scope": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/user/normal": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "getNormalUser",
+        "description": "getNormalUser",
+        "operationId": "getNormalUser",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/operations/{operationid}/cancel": {
+      "put": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "cancelDevGroupOperation",
+        "description": "cancelDevGroupOperation",
+        "operationId": "cancelDevGroupOperation",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "operationid",
+            "description": "operationid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/operations/log/{logid}": {
+      "delete": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "deleteDevGroupOperationlog",
+        "description": "deleteDevGroupOperationlog",
+        "operationId": "deleteDevGroupOperationlog",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "logid",
+            "description": "logid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/operations/log/count": {
+      "get": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "group_operations_log_count",
+        "description": "group_operations_log_count",
+        "operationId": "group_operations_log_count",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/operations/log": {
+      "get": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "get_group_operations_log",
+        "description": "get_group_operations_log",
+        "operationId": "get_group_operations_log",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "deleteDevGroupOperationlogs",
+        "description": "deleteDevGroupOperationlogs",
+        "operationId": "deleteDevGroupOperationlogs",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/operations/count": {
+      "get": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "group_operations_count",
+        "description": "group_operations_count",
+        "operationId": "group_operations_count",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/operations": {
+      "get": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "group_pengding_operations",
+        "description": "group_pengding_operations",
+        "operationId": "group_pengding_operations",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "AddDevGroupOperation",
+        "description": "AddDevGroupOperation",
+        "operationId": "AddDevGroupOperation",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/struct": {
+      "delete": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "deleteItemFromDevGroup",
+        "description": "deleteItemFromDevGroup",
+        "operationId": "deleteItemFromDevGroup",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/addItem": {
+      "put": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "addItemToDevGroup",
+        "description": "addItemToDevGroup",
+        "operationId": "addItemToDevGroup",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/snFile": {
+      "put": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "updateDevGroupBySnFile",
+        "description": "updateDevGroupBySnFile",
+        "operationId": "updateDevGroupBySnFile",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/imeiFile": {
+      "put": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "updateDevGroupByImeiFile",
+        "description": "updateDevGroupByImeiFile",
+        "operationId": "updateDevGroupByImeiFile",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/msisdnFile": {
+      "put": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "updateDevGroupByMsisdnFile",
+        "description": "updateDevGroupByMsisdnFile",
+        "operationId": "updateDevGroupByMsisdnFile",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/groupRename": {
+      "put": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "updateDevGroupName",
+        "description": "updateDevGroupName",
+        "operationId": "updateDevGroupName",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{groupName}/configuration": {
+      "get": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "group_get_config_by_groupname",
+        "description": "group_get_config_by_groupname",
+        "operationId": "group_get_config_by_groupname",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "groupName",
+            "description": "groupName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/query/by": {
+      "get": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "get_group_by",
+        "description": "get_group_by",
+        "operationId": "get_group_by",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/ids": {
+      "put": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "replace_group_item",
+        "description": "replace_group_item",
+        "operationId": "replace_group_item",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}/sync": {
+      "get": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "sync_group_item",
+        "description": "sync_group_item",
+        "operationId": "sync_group_item",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup/{id}": {
+      "get": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "get_group_item",
+        "description": "get_group_item",
+        "operationId": "get_group_item",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "deleteDevGroup",
+        "description": "deleteDevGroup",
+        "operationId": "deleteDevGroup",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/devicegroup": {
+      "get": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "get_group",
+        "description": "get_group",
+        "operationId": "get_group",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "devicegroup"
+        ],
+        "summary": "setDevGroup",
+        "description": "setDevGroup",
+        "operationId": "setDevGroup",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/operations/{operationid}/cancel": {
+      "put": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "cancelDevGroupOperation",
+        "description": "cancelUspDevGroupOperation",
+        "operationId": "cancelUspDevGroupOperation",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "operationid",
+            "description": "operationid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/operations/log/{logid}": {
+      "delete": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "deleteUspDevGroupOperationlog",
+        "description": "deleteUspDevGroupOperationlog",
+        "operationId": "deleteUspDevGroupOperationlog",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "logid",
+            "description": "logid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/operations/log/count": {
+      "delete": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "usp_group_operations_log_count",
+        "description": "usp_group_operations_log_count",
+        "operationId": "usp_group_operations_log_count",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/operations/log": {
+      "get": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "usp_get_group_operations_log",
+        "description": "usp_get_group_operations_log",
+        "operationId": "usp_get_group_operations_log",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "deleteUspDevGroupOperationlogs",
+        "description": "deleteUspDevGroupOperationlogs",
+        "operationId": "deleteUspDevGroupOperationlogs",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/operations/count": {
+      "get": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "usp_group_operations_count",
+        "description": "usp_group_operations_count",
+        "operationId": "usp_group_operations_count",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/operations": {
+      "get": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "usp_group_pengding_operations",
+        "description": "usp_group_pengding_operations",
+        "operationId": "usp_group_pengding_operations",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/struct": {
+      "delete": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "deleteUspItemFromDevGroup",
+        "description": "deleteUspItemFromDevGroup",
+        "operationId": "deleteUspItemFromDevGroup",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/addItem": {
+      "put": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "addUspItemToDevGroup",
+        "description": "addUspItemToDevGroup",
+        "operationId": "addUspItemToDevGroup",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/snFile": {
+      "put": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "updateUspDevGroupBySnFile",
+        "description": "updateUspDevGroupBySnFile",
+        "operationId": "updateUspDevGroupBySnFile",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/imeiFile": {
+      "put": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "updateUspDevGroupByImeiFile",
+        "description": "updateUspDevGroupByImeiFile",
+        "operationId": "updateUspDevGroupByImeiFile",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/msisdnFile": {
+      "put": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "updateUspDevGroupByMsisdnFile",
+        "description": "updateUspDevGroupByMsisdnFile",
+        "operationId": "updateUspDevGroupByMsisdnFile",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/groupRename": {
+      "put": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "updateUspDevGroupName",
+        "description": "updateUspDevGroupName",
+        "operationId": "updateUspDevGroupName",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{groupName}/configuration": {
+      "get": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "usp_group_get_config_by_groupname",
+        "description": "usp_group_get_config_by_groupname",
+        "operationId": "usp_group_get_config_by_groupname",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "groupName",
+            "description": "groupName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/query/by": {
+      "get": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "get_usp_group_by",
+        "description": "get_usp_group_by",
+        "operationId": "get_usp_group_by",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/ids": {
+      "put": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "replace_usp_group_item",
+        "description": "replace_usp_group_item",
+        "operationId": "replace_usp_group_item",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}/sync": {
+      "get": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "sync_usp_group_item",
+        "description": "sync_usp_group_item",
+        "operationId": "sync_usp_group_item",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup/{id}": {
+      "get": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "get_usp_group_item",
+        "description": "get_usp_group_item",
+        "operationId": "get_usp_group_item",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "delete_Usp_DevGroup",
+        "description": "delete_Usp_DevGroup",
+        "operationId": "delete_Usp_DevGroup",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
+    },
+    "/usp/deviceGroup": {
+      "get": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "get_usp_group",
+        "description": "get_usp_group",
+        "operationId": "get_usp_group",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "usp/deviceGroup"
+        ],
+        "summary": "set_usp_group",
+        "description": "set_usp_group",
+        "operationId": "set_usp_group",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1876,6 +7973,230 @@
           },
           "target": {
             "type": "object"
+          }
+        }
+      },
+      "configuration_body": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          },
+          "scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        }
+      },
+      "import_file_body": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "version": {
+            "type": "number"
+          },
+          "scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "schedule": {
+            "type": "object",
+            "properties": {
+              "standardTime": {
+                "type": "string"
+              },
+              "validFrom": {
+                "type": "string"
+              },
+              "validUntil": {
+                "type": "string"
+              },
+              "windowEnd": {
+                "type": "string"
+              },
+              "windowEndMinute": {
+                "type": "string"
+              },
+              "windowStart": {
+                "type": "string"
+              },
+              "windowStartMinute": {
+                "type": "string"
+              }
+            }
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "stages": {
+            "type": "object"
+          },
+          "target": {
+            "type": "object"
+          }
+        }
+      },
+      "configurationconfigurationId_schedule": {
+        "type": "object",
+        "properties": {
+          "standardTime": {
+            "type": "string"
+          },
+          "validFrom": {
+            "type": "string"
+          },
+          "validUntil": {
+            "type": "string"
+          },
+          "windowEnd": {
+            "type": "string"
+          },
+          "windowEndMinute": {
+            "type": "string"
+          },
+          "windowStart": {
+            "type": "string"
+          },
+          "windowStartMinute": {
+            "type": "string"
+          }
+        }
+      },
+      "configuration_configurationId_body": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "version": {
+            "type": "number"
+          },
+          "scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/configurationconfigurationId_schedule"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "stages": {
+            "type": "object"
+          },
+          "target": {
+            "type": "object"
+          }
+        }
+      },
+      "inline_response_200_1": {
+        "properties": {
+          "iTotalRecords": {
+            "type": "integer"
+          },
+          "iTotalDisplayRecords": {
+            "type": "integer"
+          },
+          "aaData": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "inline_response_200_2": {
+        "properties": {
+          "deviceId": {
+            "type": "integer"
+          },
+          "version": {
+            "type": "number"
+          },
+          "isActive": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "deviceIdStruct": {
+            "type": "object",
+            "properties": {
+              "manufacturer": {
+                "type": "string"
+              },
+              "oui": {
+                "type": "string"
+              },
+              "productClass": {
+                "type": "string"
+              },
+              "serialNumber": {
+                "type": "string"
+              }
+            }
+          },
+          "lastConnectedTime": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          },
+          "ip": {
+            "type": "string"
+          }
+        }
+      },
+      "device_unregister_body": {
+        "properties": {
+          "DeviceId": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "inline_response_200_3": {
+        "properties": {
+          "name": {
+            "type": "integer"
+          },
+          "alias": {
+            "type": "object"
+          },
+          "reportedValue": {
+            "type": "object"
+          },
+          "status": {
+            "type": "string"
+          },
+          "writable": {
+            "type": "boolean"
+          },
+          "updated": {
+            "type": "string"
           }
         }
       }
