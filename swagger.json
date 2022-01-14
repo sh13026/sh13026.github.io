@@ -7938,6 +7938,1974 @@
         }
       }
     },
+    "/nbi/usp/device": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get device base info by struct",
+        "description": "get device base info by struct",
+        "operationId": "usp-1",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "deviceIdStruct",
+            "description": "deviceIdStruct",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/register": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "register device",
+        "description": "register device",
+        "operationId": "usp-2",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "serialNumber",
+                  "oui",
+                  "password",
+                  "productClass"
+                ],
+                "properties": {
+                  "oui": {
+                    "type": "string"
+                  },
+                  "serialNumber": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "productClass": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/batchRegister": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "batchRegister",
+        "description": "batchRegister",
+        "operationId": "usp-3",
+        "parameters": [
+          {
+            "name": "autoFiltering",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "serialNumber",
+                    "oui",
+                    "password",
+                    "productClass"
+                  ],
+                  "properties": {
+                    "oui": {
+                      "type": "string"
+                    },
+                    "serialNumber": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    },
+                    "productClass": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/localAgent/controller": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "getLocalAgentController",
+        "description": "getLocalAgentController",
+        "operationId": "usp-4",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/localAgent/subscription": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "getLocalAgentSubscription",
+        "description": "getLocalAgentSubscription",
+        "operationId": "usp-5",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/localAgent/mtp": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "getLocalAgentMtp",
+        "description": "getLocalAgentMtp",
+        "operationId": "usp-6",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/bulkDataHistory": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "getDeviceBulkDataChart",
+        "description": "getDeviceBulkDataChart",
+        "operationId": "usp-7",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{id}/parameter/{method}": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "setDeviceParameterValue",
+        "description": "setDeviceParameterValue",
+        "operationId": "usp-8",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "method",
+            "in": "path",
+            "description": "method",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "value",
+                "notification",
+                "accessList"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/log/operations/{logId}": {
+      "delete": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "deleteDeviceOperationLog",
+        "description": "deleteDeviceOperationLog",
+        "operationId": "usp-9",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "logId",
+            "in": "path",
+            "description": "logId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/log/operations": {
+      "delete": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "deleteDeviceAllOperationLog",
+        "description": "deleteDeviceAllOperationLog",
+        "operationId": "usp-10",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "deviceId",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/operations/{deviceId}/request/cancel": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "operationCancelAll",
+        "description": "operationCancelAll",
+        "operationId": "usp-11",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/operations/request/{operationId}/cancel": {
+      "put": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "operationCancel",
+        "description": "operationCancel",
+        "operationId": "usp-12",
+        "parameters": [
+          {
+            "name": "operationId",
+            "in": "path",
+            "description": "operationId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/dataTable/device/{deviceId}/operations/pending/": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "getDeviceOperationsLog",
+        "description": "getDeviceOperationsLog",
+        "operationId": "usp-13",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "deviceId",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/operations/pending/count": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "getDeviceOperationLogCount",
+        "description": "getDeviceOperationLogCount",
+        "operationId": "usp-14",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/operations": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "addOperation",
+        "description": "addOperation,",
+        "operationId": "usp-15",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deviceIdStruct": {
+                    "type": "object",
+                    "properties": {
+                      "OUI": {
+                        "type": "string"
+                      },
+                      "ProductClass": {
+                        "type": "string"
+                      },
+                      "SerialNumber": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "entries": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "object"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/operation": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "addOperation",
+        "description": "addOperation,",
+        "operationId": "usp-16",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deviceIdStruct": {
+                    "type": "object",
+                    "properties": {
+                      "OUI": {
+                        "type": "string"
+                      },
+                      "ProductClass": {
+                        "type": "string"
+                      },
+                      "SerialNumber": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "entries": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "object"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/server/status": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "Get mqttServerProvision setting",
+        "description": "Get mqttServerProvision setting",
+        "operationId": "usp-17",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/find/byFilters": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "find device by filter",
+        "description": "find device by filter",
+        "operationId": "usp-18",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "filter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/search": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "search device",
+        "description": "search device",
+        "operationId": "usp-19",
+        "parameters": [
+          {
+            "name": "searchType",
+            "in": "query",
+            "description": "searchType",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "searchValue",
+            "in": "query",
+            "description": "searchValue",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/count/status/Online": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "count online device",
+        "description": "count online device",
+        "operationId": "usp-20",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/count/total": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "count devices",
+        "description": "count devices",
+        "operationId": "usp-21",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/allCount": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get device count of productName",
+        "description": "get device count of productName",
+        "operationId": "usp-22",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/dataTable/device/{deviceId}/operations/log/": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get device operations log",
+        "description": "get device operations log",
+        "operationId": "usp-23",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "pageNumber",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "filter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/log/session/{logId}": {
+      "delete": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "delete device session log",
+        "description": "delete device session log",
+        "operationId": "usp-24",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "logId",
+            "in": "path",
+            "description": "logId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/log/operations/count": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get device operation log count",
+        "description": "get device operation log count",
+        "operationId": "usp-25",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/log/session": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get device session log",
+        "description": "get device session log",
+        "operationId": "usp-26",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "delete device log",
+        "description": "delte device log",
+        "operationId": "usp-27",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/log/session/count": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get device operation log count",
+        "description": "get device operation log count",
+        "operationId": "usp-28",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/log/sessionExport": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "export session log",
+        "description": "export session log",
+        "operationId": "usp-29",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/attributes": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get device attribute",
+        "description": "get device attribute",
+        "operationId": "usp-30",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/attribute": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "set device attribute",
+        "description": "set device attribute",
+        "operationId": "usp-31",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/attributes/{name}": {
+      "delete": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "delete device attribute",
+        "description": "delete device attribute",
+        "operationId": "usp-32",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "description": "name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/{value}": {
+      "put": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "allow/deny device",
+        "description": "allow/deny device",
+        "operationId": "usp-33",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "description": "value",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "activate",
+                "deactivate"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/unregister": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "delete device",
+        "description": "delete device",
+        "operationId": "usp-34",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "description": "deviceId"
+                  },
+                  {
+                    "type": "array",
+                    "description": "deviceIds",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get deviceInfo",
+        "description": "get deviceInfo",
+        "operationId": "usp-35",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "delete device",
+        "description": "delete device",
+        "operationId": "usp-36",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/deviceInfo": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get deviceInfo with special format",
+        "description": "get deviceInfo with special format",
+        "operationId": "usp-37",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{deviceId}/{operation}": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "device operation",
+        "description": "device operation",
+        "operationId": "usp-38",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "deviceId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operation",
+            "in": "path",
+            "description": "operation",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "parameterList": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{id}/dataModel": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get device datamodel",
+        "description": "get device datamodel",
+        "operationId": "usp-39",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/device/{id}/dataModel/discover/{node}": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "add device datamodel",
+        "description": "add device datamodel",
+        "operationId": "usp-40",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "node",
+            "in": "path",
+            "description": "node",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/configuration/import/file": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "import configuration",
+        "description": "import configuration",
+        "operationId": "usp-41",
+        "requestBody": {
+          "content": {
+            "application/xml": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/configuration/{id}/clone/{name}": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "clone configuration",
+        "description": "clone configuration",
+        "operationId": "usp-42",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "description": "name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "description": "version"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/configuration/{id}/export/xml": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "export .xml of configuration",
+        "description": "export .xml of configuration",
+        "operationId": "usp-43",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/configuration/{id}/{operation}": {
+      "put": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "enable/disable configuration",
+        "description": "enable/disable configuration",
+        "operationId": "usp-44",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operation",
+            "in": "path",
+            "description": "operation",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "activate",
+                "deactivate"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "fork configuration",
+        "description": "fork configuration",
+        "operationId": "usp-45",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operation",
+            "in": "path",
+            "description": "operation",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "fork"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "description": "version"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/configuration/{id}": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get configuration by id",
+        "description": "get configuration by id",
+        "operationId": "usp-46",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "update configuration by id",
+        "description": "update configuration by id",
+        "operationId": "usp-47",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  },
+                  "target": {
+                    "type": "string"
+                  },
+                  "stages": {
+                    "type": "string"
+                  },
+                  "firstStage": {
+                    "type": "string"
+                  },
+                  "schedule": {
+                    "type": "string"
+                  },
+                  "isActive": {
+                    "type": "boolean"
+                  },
+                  "updated": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "delete configuration by id",
+        "description": "delete configuration by id",
+        "operationId": "usp-48",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/configuration/": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get all configuration",
+        "description": "get all configuration",
+        "operationId": "usp-49",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "add configuration by id",
+        "description": "add configuration by id",
+        "operationId": "usp-50",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  },
+                  "isActive": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/datamodel/{id}": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get datamodel by id",
+        "description": "get datamodel by id",
+        "operationId": "usp-51",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/datamodel/{id}/import/{filename}": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "import datamodel",
+        "description": "import datamodel",
+        "operationId": "usp-52",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filename",
+            "in": "path",
+            "description": "filename",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "description": "xml format"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/datamodel/{id}/profile": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get datamodel profile by id",
+        "description": "get datamodel profile by id",
+        "operationId": "usp-53",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/datamodel/{id}/": {
+      "delete": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "delete datamodel",
+        "description": "delete datamodel",
+        "operationId": "usp-54",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/{productName}/summaryReportConfig": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get summary report config by product",
+        "description": "get summary report config by product",
+        "operationId": "usp-55",
+        "parameters": [
+          {
+            "name": "productName",
+            "in": "path",
+            "description": "productName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/{productName}/report/summary": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get summary report by product",
+        "description": "get summary report by product",
+        "operationId": "usp-56",
+        "parameters": [
+          {
+            "name": "productName",
+            "in": "path",
+            "description": "productName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "format",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "entries": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "enabled": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/dashboard/count": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get device dashboard count",
+        "description": "get device dashboard count",
+        "operationId": "usp-57",
+        "parameters": [
+          {
+            "name": "days",
+            "in": "query",
+            "description": "days",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "time",
+            "in": "query",
+            "description": "time",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/iot/server/report/count": {
+      "get": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "get device report count",
+        "description": "get device report count",
+        "operationId": "usp-58",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/iot/server/report": {
+      "delete": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "delete USP Server all reports",
+        "description": "delete USP Server all reports",
+        "operationId": "usp-59",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "add USP Server report",
+        "description": "add USP Server report",
+        "operationId": "usp-60",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/iot/server/report/{reportId}": {
+      "delete": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "delete USP Server report item",
+        "description": "delete USP Server report item",
+        "operationId": "usp-61",
+        "parameters": [
+          {
+            "name": "reportId",
+            "in": "path",
+            "description": "reportId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/nbi/usp/iot/report/server/{reportId}": {
+      "post": {
+        "tags": [
+          "usp"
+        ],
+        "summary": "export USP Server report",
+        "description": "export USP Server report",
+        "operationId": "usp-62",
+        "parameters": [
+          {
+            "name": "reportId",
+            "in": "path",
+            "description": "reportId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "format",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
     "/logLevel/{level}": {
       "put": {
         "tags": [
@@ -7979,18 +9947,6 @@
         }
       }
     },
-    "/preferences/server/": {
-      "post": {
-        "tags": [
-          "Other"
-        ],
-        "responses": {
-          "200": {
-            "description": "Return the requested info entry in String format"
-          }
-        }
-      }
-    },
     "/softVersion/": {
       "get": {
         "tags": [
@@ -8001,6 +9957,82 @@
             "description": "Return the requested info entry in String format",
             "content": {
               "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/license/": {
+      "get": {
+        "tags": [
+          "Other"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/license/update/": {
+      "post": {
+        "tags": [
+          "Other"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/cluster/": {
+      "get": {
+        "tags": [
+          "Other"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
                 "schema": {
                   "type": "string"
                 }
@@ -8035,8 +10067,28 @@
         }
       }
     },
-    "/preferences/update": {
+    "/preferences/server/": {
       "post": {
+        "tags": [
+          "Other"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Other"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          }
+        }
+      },
+      "put": {
         "tags": [
           "Other"
         ],
@@ -8060,21 +10112,44 @@
         }
       }
     },
-    "/license/": {
-      "get": {
+    "/preferences/datasource/": {
+      "post": {
         "tags": [
           "Other"
         ],
         "responses": {
           "200": {
-            "description": "Return the requested info entry in String format",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
+            "description": "Return the requested info entry in String format"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Other"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Other"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
               }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
           },
           "400": {
             "description": "The request sent by the client has a syntax error."
@@ -8082,21 +10157,24 @@
         }
       }
     },
-    "/cluster/": {
-      "get": {
+    "/preferences/update": {
+      "post": {
         "tags": [
           "Other"
         ],
-        "responses": {
-          "200": {
-            "description": "Return the requested info entry in String format",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
               }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
           },
           "400": {
             "description": "The request sent by the client has a syntax error."
@@ -8215,6 +10293,280 @@
           },
           "400": {
             "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/statistics/serverStatus": {
+      "get": {
+        "tags": [
+          "Other"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/statistics/{productClass}/installation/{interval}/report": {
+      "post": {
+        "tags": [
+          "Other"
+        ],
+        "parameters": [
+          {
+            "name": "productClass",
+            "in": "path",
+            "description": "productClass",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "interval",
+            "in": "path",
+            "description": "interval",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/discoveringList/": {
+      "get": {
+        "tags": [
+          "Other"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Other"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Other"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/discoveringList/{itemId}": {
+      "delete": {
+        "tags": [
+          "Other"
+        ],
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "description": "itemId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/discoveringList/{itemId}/deactivate": {
+      "put": {
+        "tags": [
+          "Other"
+        ],
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "description": "itemId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/discoveringList/{itemId}/activate": {
+      "put": {
+        "tags": [
+          "Other"
+        ],
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "description": "itemId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          }
+        }
+      }
+    },
+    "/module/{name}/disable": {
+      "put": {
+        "tags": [
+          "Other"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the requested info entry in String format"
+          },
+          "400": {
+            "description": "The request sent by the client has a syntax error."
+          },
+          "500": {
+            "description": "Operate error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
