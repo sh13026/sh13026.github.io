@@ -10879,7 +10879,8 @@
         "required": true,
         "schema": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "example": 10
         }
       },
       "page": {
@@ -10889,7 +10890,8 @@
         "required": true,
         "schema": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "example": 1
         }
       },
       "sort": {
@@ -10897,7 +10899,8 @@
         "in": "query",
         "description": "sort",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "lastConnected,desc"
         }
       },
       "filter": {
@@ -10905,7 +10908,8 @@
         "in": "query",
         "description": "filter",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "%7B%22deviceIdStruct.serialNumber%22:%22E201A000007%22%7D"
         }
       },
       "groupName": {
