@@ -629,6 +629,7 @@
         "tags": [
           "DMS"
         ],
+        "description": "This method is used by the ACS to get the list of devices by specified filtering parameters.",
         "parameters": [
           {
             "$ref": "#/components/parameters/size"
